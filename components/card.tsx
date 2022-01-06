@@ -12,6 +12,7 @@ export type cardProps = {
     cardTitle: string;
     cardNotes: string;
     cardTags: tag[];
+    onClose: (arg0: string) => any;
 }
 
 const Tag = (prop : tag) => {
@@ -22,7 +23,7 @@ const Tag = (prop : tag) => {
     )
 }
 
-const Card = ({cardTitle, cardNotes, cardTags}: cardProps) => {
+const Card = ({cardTitle, cardNotes, cardTags, onClose}: cardProps) => {
     const [title, setTitle] = useState(cardTitle);
     const [notes, setNotes] = useState(cardNotes);
     const [tags, setTags] = useState(cardTags); //custom hook to add/remove a tag?
@@ -30,7 +31,10 @@ const Card = ({cardTitle, cardNotes, cardTags}: cardProps) => {
     return(
         <div style={cardStyle}>
             <div style={cardContent}>
-                <p style={titleStyle}>{title}</p>
+                <div>
+                    <p style={titleStyle}>{title}</p>
+                    <button onClick={onClose(title)}>X</button>
+                </div>
                 <div style={tagContainer}>
                     {tags.map((t: tag) => 
                         <Tag name={t.name} color={t.color === "" ? "gainesboro": t.color}/>)}
