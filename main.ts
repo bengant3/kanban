@@ -1,6 +1,6 @@
 // Copyright 2021 Ben
 
-import {app, BrowserWindow } from 'electron';
+const { app, BrowserWindow } = require('electron');
 
 let win;
 
@@ -15,7 +15,7 @@ const createWindow = () => {
 
 app.on('ready', () => {
     createWindow();
-
+    console.log("hello")
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
