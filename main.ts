@@ -15,7 +15,6 @@ const createWindow = () => {
 
 app.on('ready', () => {
     createWindow();
-    console.log("hello")
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
